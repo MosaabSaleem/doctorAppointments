@@ -4,18 +4,15 @@ import Header from './assets/doctorHeader.jpg';
 
 export default function Doctor() {
   useEffect(() => {
-    if (window.Calendly) {
-      window.Calendly.initBadgeWidget({
-        url: 'https://calendly.com/mmosaab2002?primary_color=ff0000',
-        text: 'Book Appointment Now!',
-        color: '#020202',
-        textColor: '#ffffff',
-        branding: false,
-        hide_landing_page_details: true,
-        hide_gdpr_banner: true,
-      });
+    if (!document.getElementById('calendly-widget-script')) {
+      const script = document.createElement('script');
+      script.id = 'calendly-widget-script';
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
     }
   }, []);
+
   return (
     <div className='doctor'>
       <div className='header'>
@@ -34,11 +31,16 @@ export default function Doctor() {
         <p className='mainText'>
           To schedule an appointment, please use the booking button or contact Dr. Smith directly using the information above.
         </p>
+        {/* <!-- Calendly inline widget begin --> */}
+        <div className="calendly-inline-widget" data-url="https://calendly.com/mmosaab2002"></div>
+        
+        {/* <!-- Calendly inline widget end --> */}
         <div className='contact'>
           <h2>Contact Information</h2>
           <div className='contactDetails'>
-          <p className='mainText'>Email: doctor@test.com</p>
-          <p className='mainText'>Phone: +1234567890</p>
+          <p className='contactText'>Email: doctor@test.com</p>
+          <div className='contactSeparator'></div>
+          <p className='contactText'>Phone: +1234567890</p>
           </div>
         </div>
       </div>
