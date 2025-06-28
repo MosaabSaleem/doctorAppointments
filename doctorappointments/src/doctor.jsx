@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import "./doctor.css";
+import MapWithMarker from './MapWithMarker';
 import Header from './assets/doctorHeader.jpg';
 
 export default function Doctor() {
@@ -35,12 +36,16 @@ export default function Doctor() {
         <div className="calendly-inline-widget" data-url="https://calendly.com/mmosaab2002"></div>
         
         {/* <!-- Calendly inline widget end --> */}
-        <div className='contact'>
-          <h2>Contact Information</h2>
-          <div className='contactDetails'>
-          <p className='contactText'>Email: doctor@test.com</p>
-          <div className='contactSeparator'></div>
-          <p className='contactText'>Phone: +1234567890</p>
+
+        <div className='contactMap'>
+          <MapWithMarker />
+          <div className='contact'>
+            <h2>Contact Information</h2>
+            <div className='contactDetails'>
+            <p className='contactText'>Email: doctor@test.com</p>
+            <div className='contactSeparator'></div>
+            <p className='contactText'>Phone: +1234567890</p>
+            </div>
           </div>
         </div>
       </div>
